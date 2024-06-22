@@ -1,0 +1,99 @@
+.searchField {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    width: 40vw;
+    min-width: 200px;
+    margin-top: 84px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 30px;
+    padding: 20px;
+
+    input {
+        border: none;
+        width: 100%;
+        outline: none;
+        font-size: 24px;
+        font-weight: 600;
+        color: #5f5e5e;
+
+    }
+}
+
+.userTableContainer {
+    display: flex;
+    width: 100%;
+    min-width: 300px;
+    padding: 24px;
+    justify-content: center;
+    align-items: center;
+
+    .userTable {
+        display: flex;
+        justify-content: center;
+        width: 70%;
+        min-width: 300px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 24px;
+
+        table {
+            width: 100%;
+
+            th {
+                border-bottom: 1px solid #d7d7d7;
+                padding: 10px;
+            }
+
+            tr {
+                text-align: center;
+
+
+            }
+
+            td {
+                border-bottom: 1px solid #d7d7d7;
+                padding: 10px;
+
+              
+                .deleteBtn{
+                    font-weight: 600;
+                    font-size: 18px;
+                    border: none;
+                    background-color: transparent;
+                    color: red;
+                    margin-left: 8px;
+                    cursor: pointer;
+                }
+                .editBtn{
+                    border: none;
+                    font-weight: 600;
+                    font-size: 18px;
+                    background-color: transparent;
+                    cursor: pointer;
+
+                    
+                }
+
+            }
+        }
+
+        .footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            bottom: 0;
+            gap: 24px;
+            width: 100%;
+            min-width: 300px;
+            height: 40px;
+            background-color: #d7d7d7;
+        }
+    }
+
+    .loadingTable {
+        display: flex;
+    }
+}

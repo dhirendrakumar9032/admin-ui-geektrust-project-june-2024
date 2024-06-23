@@ -1,5 +1,6 @@
 # Admin UI Geektrust Project
 
+##  [Demo](https://admin-ui-geektrust-project-june-2024.vercel.app/)
 
 ## Tech Stack
 - **Frontend Framework:** React

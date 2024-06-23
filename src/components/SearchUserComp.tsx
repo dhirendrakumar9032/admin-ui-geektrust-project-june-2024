@@ -20,7 +20,7 @@ const SearchUserComp:FC = () => {
     }
   return (
     <div className={styles.searchField}>
-        <input value={searchInp} type="text" placeholder="Search User name, email, or role" onChange={handleChange}/>
+        <input value={searchInp} type="text" placeholder="Search User's name, email, or role" onChange={handleChange}/>
     </div>
   )
 }

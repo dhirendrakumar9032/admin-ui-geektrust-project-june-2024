@@ -1,11 +1,11 @@
 import  { FC, useEffect, useState } from 'react'
 import styles from './index.module.scss'
-import { useSearchStore } from '../store';
+import { useUserTableStore } from '../store';
 
 const SearchUserComp:FC = () => {
 
     const [searchInp, setSearchInp]=useState<string>('');
-    const {  setDebouncedSearch } = useSearchStore();
+    const {  setDebouncedSearch } = useUserTableStore();
 
     useEffect(()=>{
         const timer= setTimeout(()=>{

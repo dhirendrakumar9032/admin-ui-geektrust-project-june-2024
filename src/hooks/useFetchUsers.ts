@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState, useEffect } from "react";
-import { useSearchStore } from "../store";
+import { useUserTableStore } from "../store";
 
 const useGetUsersData = () => {
-    
+
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
-    const {usersData, setUsersData,debouncedSearch}=useSearchStore()
+    const { usersData, setUsersData, debouncedSearch } = useUserTableStore()
 
     const fetchUsers = async () => {
         const response = await fetch('https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json');
@@ -28,16 +28,19 @@ const useGetUsersData = () => {
         }
     }, [data]);
 
-    useEffect(()=>{
-        if(debouncedSearch){
-            const searchedData= usersData.filter(user => user.name.toLocaleLowerCase().includes(debouncedSearch.toLocaleLowerCase())
-            ||user.email.toLocaleLowerCase().includes(debouncedSearch.toLocaleLowerCase())
-            ||user.role.toLocaleLowerCase().includes(debouncedSearch.toLocaleLowerCase()));
+    useEffect(() => {
+        console.log({ debouncedSearch })
+        if (debouncedSearch) {
+            const searchedData = usersData.filter(user => user.name.toLocaleLowerCase().includes(debouncedSearch.toLocaleLowerCase())
+                || user.email.toLocaleLowerCase().includes(debouncedSearch.toLocaleLowerCase())
+                || user.role.toLocaleLowerCase().includes(debouncedSearch.toLocaleLowerCase()));
             setUsersData(searchedData);
-        }else{
+            console.log({ debouncedSearch })
+
+        } else {
             setUsersData(data);
         }
-    },[debouncedSearch])
+    }, [debouncedSearch])
 
     useEffect(() => {
         if (error) {
@@ -48,4 +51,4 @@ const useGetUsersData = () => {
     return { usersData, isLoading, error, errorMessage };
 }
 
-export { useGetUsersData  }
+export { useGetUsersData }

@@ -46,11 +46,12 @@ This project adheres to the SOLID principles of object-oriented design:
 - Node.js
 - npm or yarn
 
-### Installation
+### Installation & Run Project
 1. Clone the repository:
    ```bash
    git clone https://github.com/dhirendrakumar9032/admin-ui-geektrust-project-june-2024.git
    cd admin-ui-geektrust
+   run yarn or npm install
    npm run dev
 
 

@@ -1,10 +1,12 @@
-import create from 'zustand';
-import { SearchState, Users } from './types';
+import { create } from 'zustand';
+import { SearchState, } from './types';
 
 
-export const useSearchStore = create<SearchState>((set) => ({
+const useUserTableStore = create<SearchState>((set) => ({
     debouncedSearch: null,
     setDebouncedSearch: (value) => set({ debouncedSearch: value }),
-    usersData:[],
+    usersData: [],
     setUsersData: (value) => set({ usersData: value }),
 }));
+
+export { useUserTableStore }

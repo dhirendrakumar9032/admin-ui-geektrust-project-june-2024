@@ -6,12 +6,15 @@ import UserTableHeader from './UserTableHeader';
 import UserTableRow from './UserTableRow';
 import UserTableFooter from './UserTableFooter';
 
-
 const UserTable: React.FC<UserTableProps> = ({ usersData, isLoading }) => {
   const [users, setUsers] = useState<Users[]>([]);
   const [selectedUserIds, setSelectedUserIds] = useState<string[]>([]);
   const [editUserId, setEditUserId] = useState<string | null>(null);
   const [editUserData, setEditUserData] = useState<Users | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const rowsPerPage = 10;
+  const totalPages = Math.ceil(users.length / rowsPerPage);
 
   useEffect(() => {
     if (!isLoading && usersData) {
@@ -73,6 +76,24 @@ const UserTable: React.FC<UserTableProps> = ({ usersData, isLoading }) => {
     }
   };
 
+  const handleChangePage = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const displayedUsers = users.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage);
+
   return (
     <div className={styles.userTableContainer}>
       {isLoading ? (
@@ -82,7 +103,7 @@ const UserTable: React.FC<UserTableProps> = ({ usersData, isLoading }) => {
           <table>
             <UserTableHeader />
             <tbody>
-              {users?.map(user => (
+              {displayedUsers.map(user => (
                 <UserTableRow
                   key={user.id}
                   user={user}
@@ -99,7 +120,15 @@ const UserTable: React.FC<UserTableProps> = ({ usersData, isLoading }) => {
               ))}
             </tbody>
           </table>
-          <UserTableFooter onDeleteSelected={handleDeleteSelected} />
+          <UserTableFooter
+            onDeleteSelected={handleDeleteSelected}
+            usersData={usersData}
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onChangePage={handleChangePage}
+            onNextPage={handleNextPage}
+            onPreviousPage={handlePreviousPage}
+          />
         </div>
       )}
     </div>

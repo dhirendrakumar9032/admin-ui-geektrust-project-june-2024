@@ -2,7 +2,7 @@
 import styles from './App.module.scss'
 import { SearchUserComp } from './components/SearchUserComp'
 import { UserTable } from './components/UserTable/UserTable';
-import {  useGetUsersData } from './hooks/useFetchUsers';
+import {  useGetUsersData } from './hooks/useGetUsersData';
 import { Toaster } from 'react-hot-toast';
 
 function App() {

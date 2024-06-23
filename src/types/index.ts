@@ -11,11 +11,14 @@ type UserTableProps = {
     isLoading: boolean;
 }
 
-interface SearchState {
+interface UserTableState {
     debouncedSearch: string | null;
     setDebouncedSearch: (value: string) => void;
     usersData: Users[];
     setUsersData: (value: Users[]) => void;
+    currentPage: number;
+    setCurrentPage: (value: number) => void;
+    
 }
 
 interface UserTableFooterProps {
@@ -28,4 +31,4 @@ interface UserTableFooterProps {
     onPreviousPage: () => void;
 }
 
-export type { Users, UserTableProps, SearchState, UserTableFooterProps }
+export type { Users, UserTableProps, UserTableState , UserTableFooterProps }

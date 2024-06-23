@@ -3,9 +3,8 @@ import { useState, useEffect } from "react";
 import { useUserTableStore } from "../store";
 
 const useGetUsersData = () => {
-
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
-    const { usersData, setUsersData, debouncedSearch } = useUserTableStore()
+    const { usersData, setUsersData, debouncedSearch, setDebouncedSearch } = useUserTableStore();
 
     const fetchUsers = async () => {
         const response = await fetch('https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json');
@@ -26,19 +25,28 @@ const useGetUsersData = () => {
             setUsersData(data);
             setErrorMessage(null);
         }
-    }, [data]);
+    }, [data, setUsersData]);
 
     useEffect(() => {
-        if (debouncedSearch) {
-            const searchedData = usersData.filter(user => user.name.toLocaleLowerCase().includes(debouncedSearch.toLocaleLowerCase())
-                || user.email.toLocaleLowerCase().includes(debouncedSearch.toLocaleLowerCase())
-                || user.role.toLocaleLowerCase().includes(debouncedSearch.toLocaleLowerCase()));
-            setUsersData(searchedData);
+        const handleSearch = () => {
+            if (debouncedSearch) {
+                const searchedData = usersData.filter(user => 
+                    user.name.toLowerCase().includes(debouncedSearch.toLowerCase()) ||
+                    user.email.toLowerCase().includes(debouncedSearch.toLowerCase()) ||
+                    user.role.toLowerCase().includes(debouncedSearch.toLowerCase())
+                );
+                setUsersData(searchedData);
+            } else {
+                setUsersData(data);
+            }
+        };
 
-        } else {
-            setUsersData(data);
-        }
-    }, [debouncedSearch])
+        const debounceTimeout = setTimeout(handleSearch, 300);
+
+        return () => {
+            clearTimeout(debounceTimeout);
+        };
+    }, [debouncedSearch, usersData, data, setUsersData]);
 
     useEffect(() => {
         if (error) {
@@ -46,7 +54,7 @@ const useGetUsersData = () => {
         }
     }, [error]);
 
-    return { usersData, isLoading, error, errorMessage };
+    return { usersData, isLoading, error, errorMessage, setDebouncedSearch };
 }
 
 export { useGetUsersData }

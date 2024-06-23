@@ -5,13 +5,14 @@ import styles from '../index.module.scss';
 import UserTableHeader from './UserTableHeader';
 import UserTableRow from './UserTableRow';
 import UserTableFooter from './UserTableFooter';
+import { useUserTableStore } from '../../store';
 
 const UserTable: React.FC<UserTableProps> = ({ usersData, isLoading }) => {
   const [users, setUsers] = useState<Users[]>([]);
   const [selectedUserIds, setSelectedUserIds] = useState<string[]>([]);
   const [editUserId, setEditUserId] = useState<string | null>(null);
   const [editUserData, setEditUserData] = useState<Users | null>(null);
-  const [currentPage, setCurrentPage] = useState(1);
+  const {currentPage, setCurrentPage} = useUserTableStore();
 
   const rowsPerPage = 10;
   const totalPages = Math.ceil(users.length / rowsPerPage);

@@ -54,6 +54,7 @@
     width: 100%;
     min-width: 300px;
     padding: 24px;
+    padding-bottom: 0;
     justify-content: center;
     align-items: center;
 
@@ -100,6 +101,7 @@
                 color: white;
                 background-color: #34495E;
                 margin: 5px;
+                height: 50px;
 
                 input {
                     border: 1px solid #d7d7d7;

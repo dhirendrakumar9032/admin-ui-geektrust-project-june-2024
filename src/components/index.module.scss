@@ -1,3 +1,30 @@
+@mixin btn($color) {
+    font-weight: 600;
+    font-size: 18px;
+    border: none;
+    background-color: transparent;
+    color: $color;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+@mixin footer-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+    border-radius: 20px;
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    border: 1px solid#34495E;
+    cursor: pointer;
+    background-color: #34495E;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
 .searchField {
     display: flex;
     align-items: center;
@@ -5,6 +32,7 @@
     width: 40vw;
     min-width: 200px;
     margin-top: 84px;
+    background-color: #F2F4F4;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 30px;
     padding: 20px;
@@ -16,6 +44,7 @@
         font-size: 24px;
         font-weight: 600;
         color: #5f5e5e;
+        background-color: #F2F4F4;
 
     }
 }
@@ -33,47 +62,68 @@
         justify-content: center;
         width: 70%;
         min-width: 300px;
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        background-color: #AEB6BF;
         border-radius: 5px;
         padding: 10px;
         margin: 24px;
+        margin-bottom: 80px;
 
         table {
             width: 100%;
 
-            th {
-                border-bottom: 1px solid #d7d7d7;
-                padding: 10px;
+            thead {
+                background-color: #283747;
+
+                th {
+                    padding: 10px;
+                    color: white;
+                }
+
+                tr {
+                    text-align: center;
+
+
+                }
             }
 
-            tr {
-                text-align: center;
+            tbody {
+                tr {
+                    text-align: center;
+                    margin: 5px;
 
-
+                }
             }
 
             td {
                 border-bottom: 1px solid #d7d7d7;
                 padding: 10px;
+                color: white;
+                background-color: #34495E;
+                margin: 5px;
 
-              
-                .deleteBtn{
-                    font-weight: 600;
-                    font-size: 18px;
-                    border: none;
-                    background-color: transparent;
-                    color: red;
-                    margin-left: 8px;
+                input {
+                    border: 1px solid #d7d7d7;
+                    padding: 5px;
+                    border-radius: 5px;
+                    outline: none;
+                    font-size: 16px;
                     cursor: pointer;
                 }
-                .editBtn{
-                    border: none;
-                    font-weight: 600;
-                    font-size: 18px;
-                    background-color: transparent;
-                    cursor: pointer;
 
-                    
+                .delete {
+                    @include btn(#E74C3C)
+                }
+
+                .edit {
+                    @include btn(#d7d7d7)
+                }
+
+                .save {
+                    @include btn(#d7d7d7)
+                }
+
+                .cancel {
+                    @include btn(#E74C3C)
                 }
 
             }
@@ -85,11 +135,52 @@
             align-items: center;
             position: fixed;
             bottom: 0;
-            gap: 24px;
+            gap: 60px;
             width: 100%;
             min-width: 300px;
-            height: 40px;
-            background-color: #d7d7d7;
+            height: 60px;
+            background-color: #D6DBDF;
+            padding: 16px;
+
+            .deleteAll {
+                width: fit-content;
+                padding: 10px;
+                border: none;
+                color: white;
+                background-color: #E74C3C;
+                font-weight: 600;
+                font-size: 14px;
+                cursor: pointer;
+                border-radius: 30px;
+            }
+
+            .pagination {
+                display: flex;
+
+                .prevArrow {
+                    @include footer-btn()
+                }
+
+                .nextArrow {
+                    @include footer-btn()
+                }
+
+                .previous {
+                    @include footer-btn()
+                }
+
+                .next {
+                    @include footer-btn()
+                }
+
+                .numbers {
+                    @include footer-btn();
+                    font-weight: 400;
+                    font-size: 14px;
+                }
+            }
+
+
         }
     }
 

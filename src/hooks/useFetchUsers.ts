@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useState, useEffect } from "react";
 import { useSearchStore } from "../store";
 
-const useFetchUsers = () => {
+const useGetUsersData = () => {
     
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const {usersData, setUsersData,debouncedSearch}=useSearchStore()
@@ -30,7 +30,9 @@ const useFetchUsers = () => {
 
     useEffect(()=>{
         if(debouncedSearch){
-            const searchedData= usersData.filter(user => user.name.toLocaleLowerCase().includes(debouncedSearch.toLocaleLowerCase()));
+            const searchedData= usersData.filter(user => user.name.toLocaleLowerCase().includes(debouncedSearch.toLocaleLowerCase())
+            ||user.email.toLocaleLowerCase().includes(debouncedSearch.toLocaleLowerCase())
+            ||user.role.toLocaleLowerCase().includes(debouncedSearch.toLocaleLowerCase()));
             setUsersData(searchedData);
         }else{
             setUsersData(data);
@@ -46,4 +48,4 @@ const useFetchUsers = () => {
     return { usersData, isLoading, error, errorMessage };
 }
 
-export { useFetchUsers }
+export { useGetUsersData  }

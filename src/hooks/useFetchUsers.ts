@@ -29,13 +29,11 @@ const useGetUsersData = () => {
     }, [data]);
 
     useEffect(() => {
-        console.log({ debouncedSearch })
         if (debouncedSearch) {
             const searchedData = usersData.filter(user => user.name.toLocaleLowerCase().includes(debouncedSearch.toLocaleLowerCase())
                 || user.email.toLocaleLowerCase().includes(debouncedSearch.toLocaleLowerCase())
                 || user.role.toLocaleLowerCase().includes(debouncedSearch.toLocaleLowerCase()));
             setUsersData(searchedData);
-            console.log({ debouncedSearch })
 
         } else {
             setUsersData(data);

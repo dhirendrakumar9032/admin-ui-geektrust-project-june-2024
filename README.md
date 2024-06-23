@@ -1,5 +1,6 @@
 # Admin UI Geektrust Project
 
+
 ## Tech Stack
 - **Frontend Framework:** React
 - **Programming Language:** TypeScript
@@ -32,22 +33,12 @@ The Admin UI Geektrust Project is a user management system that provides functio
    - Provides a user-friendly pagination interface at the bottom of the table.
 
 ## SOLID Principles
-This project adheres to the SOLID principles of object-oriented design to ensure maintainable and scalable code.
-
-1. **Single Responsibility Principle (SRP)**
-   - Each component has a single responsibility. For example, the `SearchComponent` handles only the search functionality, while the `UserTable` manages the display and management of user data.
-
-2. **Open/Closed Principle (OCP)**
-   - The code is designed to be open for extension but closed for modification. For instance, new features can be added as new components or enhancements without modifying the existing ones.
-
-3. **Liskov Substitution Principle (LSP)**
-   - Components are replaceable with their subtypes without altering the correctness of the program. This ensures that the `UserTable` component can work seamlessly with different types of data providers or state management solutions.
-
-4. **Interface Segregation Principle (ISP)**
-   - The codebase avoids large, monolithic interfaces. Instead, it uses specific, client-focused interfaces. Each component or utility function has a clearly defined role and interacts with well-defined interfaces.
-
-5. **Dependency Inversion Principle (DIP)**
-   - High-level modules do not depend on low-level modules but on abstractions. State management using Zustand and data fetching with React Query abstracts the details of these operations from the components, allowing them to focus on their core responsibilities.
+This project adheres to the SOLID principles of object-oriented design:
+- **Single Responsibility Principle (SRP)**
+- **Open/Closed Principle (OCP)**
+- **Liskov Substitution Principle (LSP)**
+- **Interface Segregation Principle (ISP)**
+- **Dependency Inversion Principle (DIP)**
 
 ## Getting Started
 
@@ -58,6 +49,17 @@ This project adheres to the SOLID principles of object-oriented design to ensure
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/admin-ui-geektrust.git
+   git clone https://github.com/dhirendrakumar9032/admin-ui-geektrust-project-june-2024.git
    cd admin-ui-geektrust
    npm run dev
+
+
+## Developer Information
+- **Name:** Dhirendra Kumar
+- **Email:** dhirendra9032@gmail.com
+- **Role:** Front End Developer
+- **Company:** Qapita Fintech India Pvt Ltd
+- **Location:** Hyderabaad
+- **Contact No:** 8604390422
+
+

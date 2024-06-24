@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState, useEffect } from "react";
-import { useUserTableStore } from "../store";
+import { Users } from "../types";
 
-const useGetUsersData = () => {
+const useGetUsersData = (debouncedSearch?:string) => {
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
-    const { usersData, setUsersData, debouncedSearch, setDebouncedSearch } = useUserTableStore();
+    const [ usersData, setUsersData]=useState<Users[]|[]>([]);
 
     const fetchUsers = async () => {
         const response = await fetch('https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json');
@@ -54,7 +54,7 @@ const useGetUsersData = () => {
         }
     }, [error]);
 
-    return { usersData, isLoading, error, errorMessage, setDebouncedSearch };
+    return { usersData, isLoading, error, errorMessage, debouncedSearch };
 }
 
 export { useGetUsersData }

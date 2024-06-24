@@ -1,15 +1,18 @@
 import  { FC, useEffect, useState } from 'react'
 import styles from './index.module.scss'
-import { useUserTableStore } from '../store';
 
-const SearchUserComp:FC = () => {
+type SearchUserCompProps = {
+  hanldedebouncedSearch: (searchText: string) => void;
+}
+
+const SearchUserComp:FC<SearchUserCompProps> = ({hanldedebouncedSearch}) => {
 
     const [searchInp, setSearchInp]=useState<string>('');
-    const {  setDebouncedSearch } = useUserTableStore();
+    
 
     useEffect(()=>{
         const timer= setTimeout(()=>{
-          setDebouncedSearch(searchInp)
+          hanldedebouncedSearch(searchInp)
         },300);
 
        return ()=> clearTimeout(timer);
